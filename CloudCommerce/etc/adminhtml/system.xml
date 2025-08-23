@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="cloudcommerce_s3aws" translate="label" sortOrder="900" showInDefault="1">
+            <label>S3 Storage</label>
+            <tab>general</tab>
+            <resource>CloudCommerce_S3Aws::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1">
+                <label>General Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Enable S3 Sync</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="aws_key" translate="label" type="text" sortOrder="20" showInDefault="1">
+                    <label>AWS Access Key ID</label>
+                </field>
+                <field id="aws_secret" translate="label" type="password" sortOrder="30" showInDefault="1">
+                    <label>AWS Secret Access Key</label>
+                </field>
+                <field id="region" translate="label" type="text" sortOrder="40" showInDefault="1">
+                    <label>AWS Region</label>
+                    <comment>e.g. ap-south-1</comment>
+                </field>
+                <field id="bucket" translate="label" type="text" sortOrder="50" showInDefault="1">
+                    <label>S3 Bucket</label>
+                </field>
+                <field id="base_folder" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>S3 Base Folder</label>
+                    <comment>Optional: All uploaded files will be stored inside this folder. Leave empty to upload directly in root.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Logger configuration -->
+    <type name="CloudCommerce\S3Aws\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">s3_upload</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="object">CloudCommerce\S3Aws\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Plugin to upload saved files to S3 -->
+    <type name="Magento\MediaStorage\Model\File\Uploader">
+        <plugin name="cloudcommerce_s3aws_uploader_plugin"
+                type="CloudCommerce\S3Aws\Plugin\UploaderPlugin" sortOrder="10"/>
+    </type>
+
+    <!-- Framework uploader plugin -->
+    <type name="Magento\Framework\File\Uploader">
+        <plugin name="cloudcommerce_s3aws_framework_uploader_plugin"
+                type="CloudCommerce\S3Aws\Plugin\UploaderPlugin" sortOrder="10"/>
+    </type>
+
+    <!-- CLI command -->
+    <type name="Symfony\Component\Console\Command\Command">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="cloudcommerce:s3:sync" xsi:type="object">CloudCommerce\S3Aws\Console\Command\SyncCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Image adapter plugin for all image saves -->
+    <type name="Magento\Framework\Image\Adapter\AdapterInterface">
+        <plugin name="cloudcommerce_s3aws_image_adapter_plugin"
+                type="CloudCommerce\S3Aws\Plugin\ImageAdapterPlugin" sortOrder="10"/>
+    </type>
+
+    <!-- CreateHandler plugin for moveImageFromTmp -->
+    <type name="Magento\Catalog\Model\Product\Gallery\CreateHandler">
+        <plugin name="cloudcommerce_s3aws_create_handler_plugin"
+                type="CloudCommerce\S3Aws\Plugin\CreateHandlerPlugin" sortOrder="10"/>
+    </type>
+
+    <!-- ImageUploader plugin for category images -->
+    <type name="Magento\Catalog\Model\ImageUploader">
+        <plugin name="cloudcommerce_s3aws_image_uploader_plugin"
+                type="CloudCommerce\S3Aws\Plugin\ImageUploaderPlugin" sortOrder="10"/>
+    </type>
+
+    <!-- SwatchHelper plugin for swatch images -->
+    <type name="Magento\Swatches\Helper\Media">
+        <plugin name="cloudcommerce_s3aws_swatch_helper_plugin"
+                type="CloudCommerce\S3Aws\Plugin\SwatchHelperPlugin" sortOrder="10"/>
+    </type>
+
+    <!-- AssetImage plugin for cache image URLs -->
+    <type name="Magento\Catalog\Model\View\Asset\Image">
+        <plugin name="cloudcommerce_s3aws_asset_image_plugin"
+                type="CloudCommerce\S3Aws\Plugin\AssetImagePlugin" sortOrder="10"/>
+    </type>
+
+    <!-- Captcha plugin for captcha images -->
+    <type name="Magento\Captcha\Model\DefaultModel">
+        <plugin name="cloudcommerce_s3aws_captcha_plugin"
+                type="CloudCommerce\S3Aws\Plugin\CaptchaPlugin" sortOrder="10"/>
+    </type>
+
+</config>
