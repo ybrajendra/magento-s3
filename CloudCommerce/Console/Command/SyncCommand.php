@@ -8,7 +8,7 @@ use Magento\Framework\Filesystem\Driver\File as DriverFile;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use CloudCommerce\S3Aws\Model\S3Client;
+use CloudCommerce\S3Aws\Model\S3client;
 use Psr\Log\LoggerInterface;
 
 class SyncCommand extends Command

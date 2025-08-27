@@ -25,10 +25,10 @@
     </type>
 
     <!-- CLI command -->
-    <type name="Symfony\Component\Console\Command\Command">
+    <type name="Magento\Framework\Console\CommandListInterface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="cloudcommerce:s3:sync" xsi:type="object">CloudCommerce\S3Aws\Console\Command\SyncCommand</item>
+                <item name="cloudcommerce_s3_sync_command" xsi:type="object">CloudCommerce\S3Aws\Console\Command\SyncCommand</item>
             </argument>
         </arguments>
     </type>
