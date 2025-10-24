@@ -23,7 +23,7 @@ class SyncCommand extends Command
         State $state,
         DirectoryList $directoryList,
         DriverFile $driverFile,
-        S3Client $s3Client,
+        S3client $s3Client,
         LoggerInterface $logger
     ) {
         $this->state = $state;

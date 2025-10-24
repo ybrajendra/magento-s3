@@ -8,7 +8,7 @@
 namespace CloudCommerce\S3Aws\Plugin;
 
 use Magento\MediaStorage\Model\File\Uploader;
-use CloudCommerce\S3Aws\Model\S3Client;
+use CloudCommerce\S3Aws\Model\S3client;
 use CloudCommerce\S3Aws\Logger\Logger;
 use Magento\Framework\Filesystem\Io\File as IoFile;
 use Magento\Framework\Filesystem\DirectoryList;
@@ -25,7 +25,7 @@ use Magento\Framework\Filesystem\DirectoryList;
 class UploaderPlugin
 {
     /**
-     * @var S3Client
+     * @var S3client
      */
     private $s3Client;
 
@@ -47,14 +47,14 @@ class UploaderPlugin
     /**
      * UploaderPlugin constructor.
      *
-     * @param S3Client $s3Client
+     * @param S3client $s3Client
      * @param Logger $logger
      * @param IoFile $ioFile
      * @param DirectoryList $directoryList
      */
 
     public function __construct(
-        S3Client $s3Client,
+        S3client $s3Client,
         Logger $logger,
         IoFile $ioFile,
         DirectoryList $directoryList
